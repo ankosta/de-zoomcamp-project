@@ -9,7 +9,7 @@ from datetime import timedelta
 
 @task(retries=3, cache_key_fn=task_input_hash, cache_expiration=timedelta(days=1))
 def fetch(dataset_url: str) -> pd.DataFrame:
-    """Read taxi data from web into pandas DataFrame"""
+    """Read crypto data from web into pandas DataFrame"""
 
     df = pd.read_csv(dataset_url)
     return df
@@ -17,12 +17,15 @@ def fetch(dataset_url: str) -> pd.DataFrame:
 
 @task(log_prints=True)
 def clean(df: pd.DataFrame) -> pd.DataFrame:
-    """Fix dtype issues"""
-    df["pickup_datetime"] = pd.to_datetime(df["pickup_datetime"])
-    df["dropoff_datetime"] = pd.to_datetime(df["dropoff_datetime"])
-    df["DOlocationID"] = df["DOlocationID"].astype("Int64")
-    df["PUlocationID"] = df["PUlocationID"].astype("Int64")
-    df["SR_Flag"] = df["SR_Flag"].astype("Int64")
+    """Fix dtype issues and add transformed columns"""
+    df["date"] = pd.to_datetime(df["date"])
+    df["price"] = df["price"].astype("float64")
+    df["total_volume"] = df["total_volume"].astype("float64")
+    df["market_cap"] = df["market_cap"].astype("float64")
+
+    # creating new columns based on aggregated data
+    df['coins_traded'] = df['total_volume'] / df['price']
+    df['coins_mined'] = df['market_cap'] / df['price']
 
     print(df.head(2))
     print(f"columns: {df.dtypes}")
@@ -33,7 +36,7 @@ def clean(df: pd.DataFrame) -> pd.DataFrame:
 @task()
 def write_local(df: pd.DataFrame, coin: str, dataset_file: str) -> Path:
     """Write DataFrame out locally as parquet file"""
-    path = Path(f"data//{dataset_file}.parquet")
+    path = Path(f"00_data//{dataset_file}.parquet")
     df.to_parquet(path, compression="gzip")
     return path
 
@@ -47,11 +50,11 @@ def write_gcs(path: Path) -> None:
 
 
 @flow()
-def etl_web_to_gcs(year: int, month: int) -> None:
+def etl_web_to_gcs(coin: str) -> None:
     """The main ETL function"""
-    coin = "fhv_parquet"
-    dataset_file = f"{coin}_tripdata_{year}-{month:02}"
-    dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhv/{dataset_file}.csv.gz"
+ #   coin = "fhv_parquet"
+    dataset_file = f"{coin}_CoinGecko_data"
+    dataset_url = f"https://github.com/ankosta/de-zoomcamp-project/releases/download/cryptocurrency/{coin}.csv"
 
     df = fetch(dataset_url)
     df_clean = clean(df)
@@ -60,13 +63,12 @@ def etl_web_to_gcs(year: int, month: int) -> None:
 
 @flow()
 def etl_parent_flow(
-    months: list[int] = [1,2,3], year: int = 2020
+    coins: list[str] = ["dogecoin", "ethereum", "ethereum-classic", "bitcoin", "litecoin", "polkadot", "solana", "tether"]
 ):
-    for month in months:
-        etl_web_to_gcs(year, month)
+    for coin in coins:
+        etl_web_to_gcs(coin)
 
 if __name__ == "__main__":
-    months = [1,2,3]
-    #,4,5,6,7,8,9,10,11,12
-    year = 2020
-    etl_parent_flow(months, year)
+    coins: list[str] = ["dogecoin", "ethereum", "ethereum-classic", "bitcoin", "litecoin", "polkadot", "solana", "tether"]
+
+    etl_parent_flow(coins)
