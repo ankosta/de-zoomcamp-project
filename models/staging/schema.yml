@@ -1,9 +1,0 @@
-version: 2
-
-sources:
-  - name: staging
-    database: crypto-reality-382409
-    schema: crypto_all
-
-    tables:
-      - name: CoinGecko_data
