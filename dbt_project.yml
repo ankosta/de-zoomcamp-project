@@ -37,9 +37,9 @@ models:
 
 seeds:
   crypto_project:
-    Poland_macro_data:
+    poland_macro_data:
       +column_types:
         date: timestamp
-        inflation rate: numeric
-        unemployment rate: numeric
+        inflation_rate: numeric
+        unemployment_rate: numeric
         GDP_change: numeric

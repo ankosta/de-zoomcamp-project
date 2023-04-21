@@ -5,4 +5,4 @@ select
     inflation_rate,	
     unemployment_rate,	
     GDP_change
-from {{ ref('Poland_macro_data') }}
+from {{ ref('poland_macro_data') }}
