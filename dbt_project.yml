@@ -34,3 +34,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   crypto_project:
     # Applies to all files under models/example/
+
+seeds:
+  crypto_project:
+    Poland_macro_data:
+      +column_types:
+        date: timestamp
+        inflation rate: numeric
+        unemployment rate: numeric
+        GDP_change: numeric
