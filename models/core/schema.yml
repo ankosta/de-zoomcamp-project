@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_macro
+    description: >
+      Basic macro variables for Poland (inflation rate, unemployment rate and GDP).
+  - name: fact_coins
+    description: >
+      Basic features of eight chosen cryptocurrencies (bitcoin, ethereum, ethereum-classic, 
+      solana, tether, dogecoin, litecoin, polkadot) and main macroeconomic statistics for Poland 
+      for a given period of time (Jan 2015-April 2023)
+      
+  - name: monthly_coin_summary
+    description: >
+      Aggregated table of all cryptocurrencies features per coin and month.
+      The table contains monthly sums and averages of the monthly indicators like 
+      prices, traded volume, or market cap. 
+    columns:
+      - name: avg_monthly_price
+        description: Monthly average price of the given coin.
+        tests:
+            - not_null:
+                severity: warn
