@@ -39,7 +39,7 @@ seeds:
   crypto_project:
     poland_macro_data:
       +column_types:
-        date: timestamp
+        date: date
         inflation_rate: numeric
         unemployment_rate: numeric
         GDP_change: numeric
