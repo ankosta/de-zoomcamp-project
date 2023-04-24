@@ -10,7 +10,7 @@ To make the analysis more reliable, I will compare the crypto data against the m
 
 I’ve used two types of data:
 
-1. Cryptocurrency data on a daily basis from 01-01-2015 till 05-04-2023 (the day I've run the project), for eight chosen coins (bitcoin, ethereum, ethereum-classic, litecoin, polkadot, solana, tether, dogecoin), source: [Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrency-historical-prices-coingecko?select=apecoin.csv).
+1. Cryptocurrency data on a daily basis from 01-01-2015 till 05-04-2023 (the day I've run the project), for eight chosen coins (bitcoin, ethereum, ethereum-classic, litecoin, polkadot, solana, tether, dogecoin). Source: [Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrency-historical-prices-coingecko?select=apecoin.csv).
     
     **Original columns:**
     
@@ -31,14 +31,14 @@ I’ve used two types of data:
 
 *market capitalization (or market cap) is the total value of all the coins that have been mined. It’s calculated by multiplying the number of coins in circulation by the current market price of a single coin.
 
-2. Poland macroeconomic data.
+2. Poland basic macroeconomic data. I've chosen Poland, as this is my country and I would like to undertand if there are any visible relations with our economy, which does closely followup global macro trends. Source: [Polish givernment statistics](https://stat.gov.pl/)
 
     **Original columns:**
     
-    - date :
-    - inflation_rate :
-    - unemployment_rate :
-    - GDP_change :
+    - date : date of observation (monthly data, GDP_change is only available querterly)
+    - inflation_rate : an increase in the price level in the economy leading to the loss of value of money
+    - unemployment_rate : rate of people registered as unemployed
+    - GDP_change : measures the change in volume of production produced by factors of production located in the territory of a given country (here Poland)
 
 # Structure
 
@@ -67,8 +67,8 @@ Project has a workflow orchestration run by Prefect, which collects data in batc
 
 3. Data Warehouse
 
-Big Query has been used as a Data Warehouse for this project. That is also where the initial data exploration took place, as well as where the dbt cloud - the transformation tool was linked. 
-Data I've used for this project is small, as it is collected on a daily basis. Tables with data size < 1 GB don't show significant improvements with partitioning and clustering. However, the infrastructure of this pipeline can be used for far more detailed data. Common practice is to analyze hourly collected prices of the cryptocurrencies. Then there is a need for data optimization. The best way to do it for this dataset is to partition by date and cluster by coin as shown below:
+**Big Query** has been used as a Data Warehouse for this project. That is also where the initial data exploration took place, as well as where the dbt cloud - the transformation tool was linked. 
+Data I've used for this project is small, as it is collected on a daily basis. Tables with data size < 1 GB don't show significant improvements with partitioning and clustering. However, the infrastructure of this pipeline can be used for far more detailed data. Common practice is to analyze hourly collected prices of the cryptocurrencies. Then there is a need for data optimization. The best way to do it for this dataset is to **partition by date and cluster by coin** as shown below:
 
 4. Transformations
 
