@@ -10,14 +10,14 @@ To make the analysis more reliable, I will compare the crypto data against the m
 
 I’ve used two types of data:
 
-1. Cryptocurrency data on a daily basis from 01-01-2015 till 05-04-2023 (the day I've run the project), for eight chosen coins (bitcoin, ethereum, ethereum-classic, litecoin, polkadot, solana, tether, dogecoin), source: Kaggle.
+1. Cryptocurrency data on a daily basis from 01-01-2015 till 05-04-2023 (the day I've run the project), for eight chosen coins (bitcoin, ethereum, ethereum-classic, litecoin, polkadot, solana, tether, dogecoin), source: [Kaggle](https://www.kaggle.com/datasets/sudalairajkumar/cryptocurrency-historical-prices-coingecko?select=apecoin.csv).
     
     **Original columns:**
     
     - date : date of observation - the price is taken at 00:00:00 hours
     - price : price of the coin at the given date and time
     - total_volume : volume of transactions on the given day in USD
-    - market_cap : Market capitalization* in USD
+    - market_cap : market capitalization* in USD
     
     **Created columns** during the **ETL** process:
     
@@ -30,6 +30,15 @@ I’ve used two types of data:
     - coin_code : official abbreviation of the coin name as observed in the financial markets
 
 *market capitalization (or market cap) is the total value of all the coins that have been mined. It’s calculated by multiplying the number of coins in circulation by the current market price of a single coin.
+
+2. Poland macroeconomic data.
+
+    **Original columns:**
+    
+    - date :
+    - inflation_rate :
+    - unemployment_rate :
+    - GDP_change :
 
 # Structure
 
