@@ -31,7 +31,7 @@ I’ve used two types of data:
 
 *market capitalization (or market cap) is the total value of all the coins that have been mined. It’s calculated by multiplying the number of coins in circulation by the current market price of a single coin.
 
-2. Poland basic macroeconomic data. I've chosen Poland, as this is my country and I would like to undertand if there are any visible relations with our economy, which does closely followup global macro trends. Source: [Polish givernment statistics](https://stat.gov.pl/)
+2. Poland basic macroeconomic data. I've chosen Poland, as this is my country and I would like to undertand if there are any visible relations with our economy, which does closely followup global macro trends. Source: [Polish government statistics](https://stat.gov.pl/)
 
     **Columns:**
     
@@ -78,10 +78,10 @@ Data I've used for this project is small, as it is collected on a daily basis. T
 
 Whole modelling, schema definition and additional data transformation are defined using the [dbt Cloud](https://github.com/ankosta/de-zoomcamp-project/tree/main/03_dbt) tool. In this step I’ve connected the cryptocurrency data collected by the workflow orchestration with the Poland macroeconomic data, creating a fact_coins table, which consists of both data sets joined together.
 
-<img width="542" alt="dbt graph" src="https://user-images.githubusercontent.com/59963512/234271577-f4eedd44-3e4b-4d06-aec2-16f68ff03421.png">
+<img width="757" alt="dbt graph" src="https://user-images.githubusercontent.com/59963512/234271577-f4eedd44-3e4b-4d06-aec2-16f68ff03421.png">
 
 5. Dashboard
 
-Data visualisation has been carried out using Google Data Studio. Dashboard has two main tiles with additional deep dive graphs for better understanding of the data and answering the questions asked in the problem statement.
+Data visualisation has been carried out using Google Data Studio. Dashboard (which can be found [here](https://lookerstudio.google.com/reporting/6202f1c4-09c0-4a9a-b362-8ba6f2bd7a96)) has two main tiles with additional deep dive graphs for better understanding of the data and answering the questions asked in the problem statement.
 
-<img width="447" alt="google data studio visualization" src="https://user-images.githubusercontent.com/59963512/234271921-53bad5af-833a-49f2-b4e5-cfdd92ace439.png">
+<img width="800" alt="google data studio visualization" src="https://user-images.githubusercontent.com/59963512/234271921-53bad5af-833a-49f2-b4e5-cfdd92ace439.png">
