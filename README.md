@@ -105,7 +105,7 @@ In the future, I would extend the crypto information for the hourly data and I w
 The biggest challenge for me personally was the whole set up of the environment, luckily we have great #dezoomcamp lectures which explain everything step by step :)
 
 <p align="center">
-<img width="900" alt="dev-env-gilbert" src="https://user-images.githubusercontent.com/59963512/234298899-e68b0ac2-33fd-4a17-8cc7-379a684aa499.png">
+<img width="600" alt="dev-env-gilbert" src="https://user-images.githubusercontent.com/59963512/234298899-e68b0ac2-33fd-4a17-8cc7-379a684aa499.png">
 </p>
 
 1. Set up [GCP](https://cloud.google.com/) account (course video for this part of setup [here](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=11)):
