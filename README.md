@@ -67,13 +67,17 @@ The project has a workflow orchestration run by **[Prefect](https://github.com/a
     - cleans data files (since data has been already cleaned in the first step, here it only tests for missing values)
     - loads data files into the **data warehouse** (**Big Query**)
 
+<p align="center">
+<img width="760" alt="Prefect flow runs" src="https://user-images.githubusercontent.com/59963512/234317078-e936eacf-e280-41e0-80b0-7bfda8939bee.png">
+</p>
+
 **3. Data Warehouse**
 
 **Big Query** has been used as a Data Warehouse for this project. That is also where the initial data exploration took place, as well as where the dbt cloud - the transformation tool was linked. 
 The data I've used for this project is small, as it is collected on a daily basis. Tables with data size < 1 GB don't show significant improvements with partitioning and clustering. However, the infrastructure of this pipeline can be used for far more detailed data. Common practice is to analyze hourly collected prices of the cryptocurrencies. Then there is a need for data optimization. The best way to do it for this dataset is to **partition by date** and **cluster by coin** as shown below:
 
 <p align="center">
-<img width="800" alt="partitioning and clustering" src="https://user-images.githubusercontent.com/59963512/234268940-3064f45e-e254-46f4-a3bc-a92f428f2a60.png">
+<img width="900" alt="partitioning and clustering" src="https://user-images.githubusercontent.com/59963512/234268940-3064f45e-e254-46f4-a3bc-a92f428f2a60.png">
 </p>
     
 **4. Transformations**
@@ -81,7 +85,7 @@ The data I've used for this project is small, as it is collected on a daily basi
 Whole modeling, schema definition, and additional data transformation are defined using the **[dbt Cloud](https://github.com/ankosta/de-zoomcamp-project/tree/main/03_dbt)** tool. In this step I’ve connected the cryptocurrency data collected by the workflow orchestration with the Poland macroeconomic data, creating a fact_coins table, which consists of both data sets joined together.
 
 <p align="center">
-<img width="800" alt="dbt graph" src="https://user-images.githubusercontent.com/59963512/234271577-f4eedd44-3e4b-4d06-aec2-16f68ff03421.png">
+<img width="900" alt="dbt graph" src="https://user-images.githubusercontent.com/59963512/234271577-f4eedd44-3e4b-4d06-aec2-16f68ff03421.png">
 </p>
 
 **5. Dashboard**
@@ -89,7 +93,7 @@ Whole modeling, schema definition, and additional data transformation are define
 Data visualisation has been carried out using **Google Data Studio**. The dashboard (which can be found [here](https://lookerstudio.google.com/reporting/6202f1c4-09c0-4a9a-b362-8ba6f2bd7a96)) has two main tiles with additional deep -dive graphs for a better understanding of the data and answering the questions asked in the problem statement.
 
 <p align="center">
-<img width="900" alt="google data studio visualization" src="https://user-images.githubusercontent.com/59963512/234271921-53bad5af-833a-49f2-b4e5-cfdd92ace439.png">
+<img width="950" alt="google data studio visualization" src="https://user-images.githubusercontent.com/59963512/234271921-53bad5af-833a-49f2-b4e5-cfdd92ace439.png">
 </p>
 
 # Summary
@@ -105,7 +109,7 @@ In the future, I would extend the crypto information for the hourly data and I w
 The biggest challenge for me personally was the whole set up of the environment, luckily we have great #dezoomcamp lectures which explain everything step by step :)
 
 <p align="center">
-<img width="600" alt="dev-env-gilbert" src="https://user-images.githubusercontent.com/59963512/234298899-e68b0ac2-33fd-4a17-8cc7-379a684aa499.png">
+<img width="550" alt="dev-env-gilbert" src="https://user-images.githubusercontent.com/59963512/234298899-e68b0ac2-33fd-4a17-8cc7-379a684aa499.png">
 </p>
 
 1. Set up [GCP](https://cloud.google.com/) account (course video for this part of setup [here](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=11)):
