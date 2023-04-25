@@ -102,6 +102,11 @@ In the future I would extend the crypto information for the hourly data and I wo
 
 # Reproducibility
 
+The biggest challenge for me personally was the whole set up of the environment, luckily we have great #dezoomcamp lectures which explain everything step by step :) 
+<p align="center">
+![frame_0_delay-0 01s](https://user-images.githubusercontent.com/59963512/234295258-9649131a-dab9-4715-af87-a1b6aca143f6.jpg)
+</p>
+
 1. Set up [GCP](https://cloud.google.com/) account (course video for this part of setup [here](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=11)):
     - create new project
     - set up new service account
@@ -117,8 +122,27 @@ In the future I would extend the crypto information for the hourly data and I wo
  3. Set up Virtual Machine on GCP (course video for this part of setup [here](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=13)):
     - create [SSH key](https://cloud.google.com/compute/docs/connect/create-ssh-keys) and paste the public key into your compute engine settings on the GCP
     - create VM instance and configure it (as per the [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=13))
- 4. Set up Prefect (workflow orchestration) (course video for this part of setup [here](https://www.youtube.com/watch?v=cdtN6dhp708&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=19)):
-    - in your terminal/code editing tool create environment:
+ 4. Set up Prefect (workflow orchestration) and run it (course video for this part of setup [here](https://www.youtube.com/watch?v=cdtN6dhp708&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=19)):
+    - in your terminal/code editing tool create environment and instal requirements found [here](https://github.com/ankosta/de-zoomcamp-project/blob/main/02_prefect/requirements.txt):
     ```
-
+    conda create -n zoomcamp python=3.9
+    conda activate zoomcamp
+    pip install -r requirements.txt 
     ```
+    - navigate to the localhost:4200 and set up blocks (SQLAlchemy Connector, GCS Bucket, GCP Credentials)
+    - run 'etl_web_to_gcs.py' and then 'etl_gcs_to_bq.py' files found [here](https://github.com/ankosta/de-zoomcamp-project/tree/main/02_prefect)
+     ```
+    python etl_web_to_gcs.py
+    python etl_gcs_to_bq.py
+    ```
+5. GCS and Big Query (course video for this part of setup [here](https://www.youtube.com/watch?v=jrHljAoD6nM&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=25)):
+    - verify that your data has loaded correctly to your bucket in Google Cloud Storage and into the Big Query
+    - explore data and optimize it by creating partitioned and clustered table
+6. Set up dbt Cloud (course video for this part of setup [here](https://www.youtube.com/watch?v=iMxh6s_wL4Q&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=33)):
+    - register free [dbt account](https://www.getdbt.com/) and link it to your repository
+    - initialize new project
+    - create models/ schemas/ seed/ tests or copy mine [here](https://github.com/ankosta/de-zoomcamp-project/tree/main/03_dbt)
+    - create production deployment and schedule job runs
+ 7. Create dashboard
+    - go to [Google Data Studio](https://datastudio.withgoogle.com/) and conncet your Biq Query coin_fact table
+    - explore data and create graphs as seen above in the '5. Dashboard' section
