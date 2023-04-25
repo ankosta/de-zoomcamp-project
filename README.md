@@ -100,7 +100,7 @@ Data visualisation has been carried out using **Google Data Studio**. The dashbo
 
 The data used is not big enough to draw any significant causality relations. However, this pipeline is ready to be used on a wider range of data.
 Nevertheless, graphs show interesting insights, like the negative relationship between market cap and interest rate, which is seen after the year 2020. Before, I would assume that the knowledge and trust in cryptocurrencies were low enough that investment did not follow any particular trends.
-Interestingly is also observed that even though tether accounts only for 4.9% of the market cap of the given crypto sample, it is -on average- the mostly traded coin. This may indicate that most of the transactions 
+Interestingly is also observed that even though tether accounts only for 4.9% of the market cap of the given crypto sample, it is -on average- the mostly traded coin. This may indicate that most people after trading various crypto coins they exchange the earnings into tether as a 'safe' coin which closely follows the value of the fiat dollar.
 
 In the future, I would extend the crypto information for the hourly data and I would dive deeper into the macroeconomic indicators.
 
