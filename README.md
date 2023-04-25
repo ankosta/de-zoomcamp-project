@@ -1,4 +1,4 @@
-# de-zoomcamp final project
+# [de-zoomcamp](https://datastudio.withgoogle.com/) final project
 
 # Problem statement
 
@@ -102,9 +102,10 @@ In the future I would extend the crypto information for the hourly data and I wo
 
 # Reproducibility
 
-The biggest challenge for me personally was the whole set up of the environment, luckily we have great #dezoomcamp lectures which explain everything step by step :) 
+The biggest challenge for me personally was the whole set up of the environment, luckily we have great #dezoomcamp lectures which explain everything step by step :)
+
 <p align="center">
-![frame_0_delay-0 01s](https://user-images.githubusercontent.com/59963512/234295258-9649131a-dab9-4715-af87-a1b6aca143f6.jpg)
+![dev-env-gilbert](https://user-images.githubusercontent.com/59963512/234298899-e68b0ac2-33fd-4a17-8cc7-379a684aa499.png)
 </p>
 
 1. Set up [GCP](https://cloud.google.com/) account (course video for this part of setup [here](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=11)):
