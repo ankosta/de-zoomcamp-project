@@ -72,16 +72,53 @@ Project has a workflow orchestration run by [Prefect](https://github.com/ankosta
 **Big Query** has been used as a Data Warehouse for this project. That is also where the initial data exploration took place, as well as where the dbt cloud - the transformation tool was linked. 
 Data I've used for this project is small, as it is collected on a daily basis. Tables with data size < 1 GB don't show significant improvements with partitioning and clustering. However, the infrastructure of this pipeline can be used for far more detailed data. Common practice is to analyze hourly collected prices of the cryptocurrencies. Then there is a need for data optimization. The best way to do it for this dataset is to **partition by date and cluster by coin** as shown below:
 
-<img width="757" alt="partitioning and clustering" src="https://user-images.githubusercontent.com/59963512/234268940-3064f45e-e254-46f4-a3bc-a92f428f2a60.png">
-
+<p align="center">
+<img width="800" alt="partitioning and clustering" src="https://user-images.githubusercontent.com/59963512/234268940-3064f45e-e254-46f4-a3bc-a92f428f2a60.png">
+</p>
+    
 4. Transformations
 
 Whole modelling, schema definition and additional data transformation are defined using the [dbt Cloud](https://github.com/ankosta/de-zoomcamp-project/tree/main/03_dbt) tool. In this step I’ve connected the cryptocurrency data collected by the workflow orchestration with the Poland macroeconomic data, creating a fact_coins table, which consists of both data sets joined together.
 
-<img width="757" alt="dbt graph" src="https://user-images.githubusercontent.com/59963512/234271577-f4eedd44-3e4b-4d06-aec2-16f68ff03421.png">
+<p align="center">
+<img width="800" alt="dbt graph" src="https://user-images.githubusercontent.com/59963512/234271577-f4eedd44-3e4b-4d06-aec2-16f68ff03421.png">
+</p>
 
 5. Dashboard
 
 Data visualisation has been carried out using Google Data Studio. Dashboard (which can be found [here](https://lookerstudio.google.com/reporting/6202f1c4-09c0-4a9a-b362-8ba6f2bd7a96)) has two main tiles with additional deep dive graphs for better understanding of the data and answering the questions asked in the problem statement.
 
-<img width="800" alt="google data studio visualization" src="https://user-images.githubusercontent.com/59963512/234271921-53bad5af-833a-49f2-b4e5-cfdd92ace439.png">
+<p align="center">
+<img width="900" alt="google data studio visualization" src="https://user-images.githubusercontent.com/59963512/234271921-53bad5af-833a-49f2-b4e5-cfdd92ace439.png">
+</p>
+
+# Summary
+
+The data used is not big enough to draw any significant causality relations. However, this pipeline is ready to be used on the wider range of data.
+Nevertheless, graphs show interesting insights, like negative relationship between market cap and interest rate, which is seen after the year 2020. Before, I would assume that the knowledge and trust to the cryptocurrencies were low enough that investment did not follow any particular trends.
+Interesting is also to observe that even though tether accounts only for the 4.9% of the market cap of the given crypto sample, it is -on average- mostly traded coin. This may indicates that most of the transactions 
+
+In the future I would extend the crypto information for the hourly data and I would dive deeper into the macreconomics indicators.
+
+# Reproducibility
+
+1. Set up [GCP](https://cloud.google.com/) account (course video for this part of setup [here](https://www.youtube.com/watch?v=Hajwnmj0xfQ&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=11)):
+    - create new project
+    - set up new service account
+    - create json credential key and download it  
+2. Set up Terraform (course video for this part of setup [here](https://www.youtube.com/watch?v=dNkEgO-CExg&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=12)):
+    - Download and install [Terraform](https://www.terraform.io/)
+    - Copy 'main.tf', 'variables.tf', and '.terraform-version' from [here](https://github.com/ankosta/de-zoomcamp-project/tree/main/01_terraform) and run:
+    ```
+    terraform init
+    terraform plan # where you will need enter your project id from point 1
+    terraform apply
+    ```
+ 3. Set up Virtual Machine on GCP (course video for this part of setup [here](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=13)):
+    - create [SSH key](https://cloud.google.com/compute/docs/connect/create-ssh-keys) and paste the public key into your compute engine settings on the GCP
+    - create VM instance and configure it (as per the [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=13))
+ 4. Set up Prefect (workflow orchestration) (course video for this part of setup [here](https://www.youtube.com/watch?v=cdtN6dhp708&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=19)):
+    - in your terminal/code editing tool create environment:
+    ```
+
+    ```
