@@ -68,7 +68,7 @@ The project has a workflow orchestration run by **[Prefect](https://github.com/a
     - loads data files into the **data warehouse** (**Big Query**)
 
 <p align="center">
-<img width="760" alt="Prefect flow runs" src="(https://github.com/ankosta/de-zoomcamp-project/blob/main/media/Prefect%20flow%20runs.png)">
+<img width="760" alt="Prefect flow runs" src="https://user-images.githubusercontent.com/59963512/234541302-1d296ef1-3abe-40ba-8537-ad5f63467e1b.png">
 </p>
 
 **3. Data Warehouse**
