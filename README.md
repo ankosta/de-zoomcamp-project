@@ -93,7 +93,7 @@ Whole modeling, schema definition, and additional data transformation are define
 Data visualisation has been carried out using **Google Data Studio**. The dashboard (which can be found [here](https://lookerstudio.google.com/reporting/6202f1c4-09c0-4a9a-b362-8ba6f2bd7a96)) has two main tiles with additional deep -dive graphs for a better understanding of the data and answering the questions asked in the problem statement.
 
 <p align="center">
-<img src="https://github.com/ankosta/de-zoomcamp-project/blob/main/media/final_dashboard_gif.gif?raw=true" width="200px">
+<img src="https://github.com/ankosta/de-zoomcamp-project/blob/main/media/final_dashboard_gif.gif?raw=true" width="800px">
 </p>
 
 # Summary
